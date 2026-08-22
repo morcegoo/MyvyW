@@ -2,101 +2,17 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MyvyW • Respira</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Outfit:wght@300;700;900&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyvyW - Respira</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,500&family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:#000;color:#fff;overflow-x:hidden;transition:background 2s}
-#bg{position:fixed;inset:0;z-index:-3;transition:all 2s ease}
-#leaves{position:fixed;inset:0;z-index:-1;pointer-events:none}
-.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
-.hero h1{font-size:90px;font-weight:900;letter-spacing:-5px;line-height:.9}
-.hero h1 i{font-family:'Cormorant Garamond',serif;font-weight:300}
-.hero .time{margin-top:20px;padding:8px 18px;border:1px solid rgba(255,255,255,.2);border-radius:100px;font-size:12px;letter-spacing:3px;text-transform:uppercase;backdrop-filter:blur(10px)}
-.hero p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;opacity:.7;margin-top:25px;max-width:500px;line-height:1.4}
-
-.carrousel-wrap{padding:20px 0 100px 0;perspective:1000px}
-.track{display:flex;gap:20px;padding:30px 20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-.track::-webkit-scrollbar{display:none}
-.card{min-width:310px;max-width:310px;height:420px;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:32px;padding:30px;display:flex;flex-direction:column;justify-content:space-between;scroll-snap-align:center;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.23,1,.32,1)}
-.card:hover{transform:rotateY(8deg) rotateX(6deg) translateY(-10px)}
-.card .num{font-size:11px;letter-spacing:4px;opacity:.4}
-.card h2{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:32px;line-height:1.1;margin-top:20px;transform:translateZ(40px)}
-.card p{font-weight:300;opacity:.6;font-size:14px;line-height:1.6;margin-top:15px;transform:translateZ(20px)}
-.card .linha{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);margin-top:auto}
-
-.leaf{position:absolute;top:-10%;font-size:20px;animation: cair linear infinite;will-change:transform}
-@keyframes cair{
-0%{transform:translateY(-10vh) translateX(0) rotate(0deg);opacity:0}
-10%{opacity:.8}
-90%{opacity:.8}
-100%{transform:translateY(110vh) translateX(100px) rotate(720deg);opacity:0}
-}
-
-.manha #bg{background:radial-gradient(circle at 50% 0%, #ff9a5c 0%, #ffcf8a 20%, #a8d8ff 60%, #e0f2ff 100%)}
-.tarde #bg{background:radial-gradient(circle at 50% 0%, #ff5a00 0%, #ff8a3d 15%, #6a8cff 60%, #0a0a1a 100%)}
-.noite #bg{background:radial-gradient(circle at 20% 20%, #1a1a3a 0%, #0a0a14 40%, #000 100%)}
-.manha{color:#2a1a0a}.manha .card{background:rgba(255,255,255,.7);color:#2a1a0a;border-color:rgba(0,0,0,.05)}
-.noite .card{background:rgba(255,255,255,.06);color:#fff}
-</style>
-</head>
-<body>
-
-<div id="bg"></div>
-<div id="leaves"></div>
-
-<div class="hero">
-<div class="time" id="timeLabel">carregando...</div>
-<h1>MyvyW<br><i>respira.</i></h1>
-<p id="fraseHero">“Nem todo dia é bom, mas há algo de bom em todo dia.”</p>
-</div>
-
-<div class="carrousel-wrap">
-<div class="track" id="track">
-<div class="card"><span class="num">01 — PAUSA</span><h2>Nem tudo precisa ser resolvido hoje.</h2><p>Algumas coisas só precisam de tempo, e tempo é o que a natureza te ensina quando uma folha cai devagar.</p><div class="linha"></div></div>
-<div class="card"><span class="num">02 — CICLO</span><h2>Você também muda de estação.</h2><p>Tem dias de sol, dias de chuva. Você não é o clima, você é o céu que observa.</p><div class="linha"></div></div>
-<div class="card"><span class="num">03 — LEVEZA</span><h2>Deixa ir o que pesa.</h2><p>As árvores não seguram as folhas que já cumpriram seu papel. Soltar também é crescer.</p><div class="linha"></div></div>
-<div class="card"><span class="num">04 — PRESENÇA</span><h2>O agora é o único lugar que existe.</h2><p>O passado é memória, o futuro é imaginação. Respira. Você já chegou.</p><div class="linha"></div></div>
-<div class="card"><span class="num">05 — LUZ</span><h2>Até a noite tem beleza.</h2><p>Sem escuro, você nunca veria as estrelas. Confia no seu anoitecer.</p><div class="linha"></div></div>
-</div>
-</div>
-
-<script>
-// 1. MUDA PAISAGEM PELO HORARIO REAL
-const h = new Date().getHours();
-const body = document.body;
-const label = document.getElementById('timeLabel');
-if(h>=6 && h<12){ body.className='manha'; label.innerText='☀️ manhã • 06h - 12h'; }
-else if(h>=12 && h<18){ body.className='tarde'; label.innerText='🌤️ tarde • 12h - 18h'; }
-else { body.className='noite'; label.innerText='🌙 noite • respire fundo'; }
-
-// 2. FOLHAS CAINDO
-const leavesContainer = document.getElementById('leaves');
-function criarFolha(){
-const el = document.createElement('div');
-el.className='leaf';
-el.innerText=['🍃','🍂','🍁'][Math.floor(Math.random()*3)];
-el.style.left = Math.random()*100+'vw';
-el.style.animationDuration = (8+Math.random()*10)+'s';
-el.style.animationDelay = Math.random()*5+'s';
-el.style.fontSize = (14+Math.random()*18)+'px';
-leavesContainer.appendChild(el);
-setTimeout(()=>el.remove(),15000);
-}
-setInterval(criarFolha, 300);
-for(let i=0;i<12;i++) criarFolha();
-
-// 3. EFEITO 3D NO MOUSE
-document.querySelectorAll('.card').forEach(c=>{
-c.addEventListener('mousemove', e=>{
-const r = c.getBoundingClientRect();
-const x = e.clientX - r.left;
-const y = e.clientY - r.top;
-c.style.transform = `perspective(1000px) rotateY(${(x - r.width/2)/15}deg) rotateX(${-(y - r.height/2)/15}deg) translateY(-10px)`;
-});
-c.addEventListener('mouseleave', ()=> c.style.transform='');
-});
-</script>
-</body>
-</html>
+body{background:#000;color:#fff;font-family:'Outfit',sans-serif;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:-5;transition:all 1.2s ease}
+#stars{position:fixed;inset:0;z-index:-4;opacity:0;transition:opacity 1.2s}
+.hero{height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+.hero h1{font-size:clamp(50px,12vw,92px);font-weight:900;line-height:.85;letter-spacing:-3px}
+.hero h1 i{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;display:block;font-size:clamp(40px,10vw,88px);margin-top:6px}
+.badge{display:inline-flex;padding:9px 20px;border:1px solid rgba(255,255,255,.22);border-radius:100px;font-size:11px;letter-spacing:4px;text-transform:uppercase;backdrop-filter:blur(10px);margin-bottom:22px}
+.sub{opacity:.65;margin-top:18px;max-width:340px;line-height:1.6;font-size:15px;font-weight:300}
+.rainbow{height:2px;width:100%;background:linear-gradient(90deg,transparent,#ff5a00
